@@ -1,0 +1,272 @@
+.cards {
+  margin-top: 10px;
+  &.multiple {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .panel {
+      flex: 1 0 300px;
+      margin: 10px;
+    }
+  }
+}
+
+.cards .panel {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  position:relative;
+
+  .panel-heading, .panel-body, .panel-footer {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  .panel-heading {
+    padding: 7px 10px;
+  }
+
+  .panel-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // font-size:18px;
+    line-height:1;
+  }
+
+  .panel-body {
+    height: 30px;
+    padding: 10px;
+  }
+
+  .panel-footer {
+    border: 0 none;
+    padding: 5px 10px;
+    font-size:11px;
+  }
+
+  .customer-name {
+    font-weight:300;
+    opacity:.8;
+  }
+
+  .order-type {
+    float:right;
+    font-size:11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .card-footer {
+    display:flex;
+    justify-content: space-between;
+  }
+
+  &.active {
+    border-right-width: 10px;
+    margin-right: -10px;
+  }
+
+}
+
+.highlight-order {
+    border-right: 3px solid #ef6c00;
+}
+
+//events
+@each $event-type, $color in
+  (created, #81d4fa),
+  (accepted, #81d4fa),
+  (processed, #81d4fa),
+  (notified, #81d4fa),
+  (executing, #0288d1),
+  (missed, #ef6c00),
+  (canceled, #e0e0e0),
+  (rejected, #a1887f),
+  (confirmed, #66bb6a),
+  (invoiced, #558b2f),
+  (authorized, #607d8b)
+{
+  .event-#{$event-type} {
+    background-color: $color;
+    color: gc($color, 70);
+    .event-sender {
+      color: gc($color, 50);
+    }
+  }
+}
+
+.event-item {
+  padding: 7px 5px;
+  border-color:#f3f3f3;
+  font-family: "Roboto Condensed", "Roboto", helvetica, sans-serif;
+}
+.event-time, .event-time-diff {
+
+}
+.event-time-diff {
+  font-weight: 700;
+}
+.event-time {
+  opacity:.8;
+  padding-left: 5px;
+}
+.event-state {text-align:right;}
+.event-sender {
+  font-size:12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  .event-item:hover & {
+    white-space: normal;
+    overflow: visible;
+  }
+}
+
+
+
+@each $heartbeat-delay, $color in
+  (normal, #fafafa),
+  (warn, #fdd835),
+  (danger, #f44336),
+{
+  .heartbeat-#{$heartbeat-delay} {
+    background-color: $color;
+    color: gc($color, 50);
+  }
+}
+
+
+@each $card-type, $color in
+  (created-passed , #f44336) ,
+  (created-urgent , #4fc3f7) ,
+  (created-soon   , #81d4fa) ,
+  (created-later  , #4db6ac) ,
+  (created-today  , #b3e5fc) ,
+  (created-future , #e1f5fe) ,
+  (executing-passed , #f44336) ,
+  (executing-urgent , #0277bd) ,
+  (executing-soon   , #0288d1) ,
+  (executing-later  , #039be5) ,
+  (executing-today  , #03a9f4) ,
+  (executing-future , #29b6f6) ,
+  (missed-passed    , #E65100) ,
+  (missed-urgent    , #EF6C00) ,
+  (missed-soon      , #FB8C00) ,
+  (missed-later     , #FFA726) ,
+  (missed-today     , #FFCC80) ,
+  (missed-future    , #FFE0B2) ,
+  (canceled-passed  , #bdbdbd) ,
+  (canceled-urgent  , #bdbdbd) ,
+  (canceled-soon    , #e0e0e0) ,
+  (canceled-later   , #eeeeee) ,
+  (canceled-today   , #f5f5f5) ,
+  (canceled-future  , #fafafa) ,
+  (rejected-passed  , #efebe9) ,
+  (rejected-urgent  , #8d6e63) ,
+  (rejected-soon    , #a1887f) ,
+  (rejected-later   , #bcaaa4) ,
+  (rejected-today   , #d7ccc8) ,
+  (rejected-future  , #efebe9) ,
+  (confirmed-passed , #fafafa) ,
+  (confirmed-urgent , #4caf50) ,
+  (confirmed-soon   , #66bb6a) ,
+  (confirmed-later  , #81c784) ,
+  (confirmed-today  , #a5d6a7) ,
+  (confirmed-future , #c8e6c9) ,
+  (invoiced-passed , #fafafa) ,
+  (invoiced-urgent , #4caf50) ,
+  (invoiced-soon   , #66bb6a) ,
+  (invoiced-later  , #81c784) ,
+  (invoiced-today  , #a5d6a7) ,
+  (invoiced-future , #c8e6c9) ,
+  (authorized-passed , #f44336) ,
+  (authorized-urgent , #78909c) ,
+  (authorized-soon   , #90a4ae) ,
+  (authorized-later  , #b0bec5) ,
+  (authorized-today  , #cfd8dc) ,
+  (authorized-future , #eceff1) ,
+  (review-open-5, #66bb6a),
+  (review-open-4, #c8e8c9),
+  (review-open-3, #fb8c00),
+  (review-open-2, #e65100),
+  (review-open-1, #f44336),
+  (review-open-0, #4fc3f7),
+  (review-close-5, #bdbdbd),
+  (review-close-4, #bdbdbd),
+  (review-close-3, #e0e0e0),
+  (review-close-2, #eeeeee),
+  (review-close-1, #f5f5f5),
+  (review-close-0, #fafafa),
+  {
+      .panel-#{$card-type} {
+      border-color: darken($color, 10%);
+      @include fancy-gradient($color, 8deg);
+      cursor: pointer;
+      color: get_contrast($color, #000, #FFF);
+
+      .panel-heading {
+          border-color: transparentize(darken($color, 20), .5);
+          box-shadow: 0 1px 0 lighten($color, 10);
+      }
+
+      .panel-footer {
+
+      }
+
+      .label-order-state {
+          color: gc($color, 50);
+          background-color: $color;
+      }
+  }
+      .list-group-item-#{$card-type} {
+          color: gc($color, 50);
+          background-color: $color;
+          border-color: darken($color, 20%);
+          cursor: pointer$color;
+      }
+  }
+
+.frame-border { border: 1px solid black; min-height: 100%; }
+.page-section { margin-top: .5em; }
+
+.list-editor {
+    .modal-dialog { height: 80%; width: 620px; }
+    .model-body { height: 100%; overflow-y: scroll; }
+}
+
+.condition {
+    background-color: darken(#fff, 10%);
+    border: 2px inset #fff;
+    padding: 2px 3px;
+
+    .no-padding {
+        padding: 0px;
+        padding-right: 2px;
+    }
+}
+
+
+.dim-light {
+    color: #999;
+}
+.indent {
+    padding-left: 1em;
+}
+.indent-modifier .row {
+    padding-left: 2em;
+}
+.section-header {
+    background-color: #ef6c00;
+    color: white;
+    font-weight: bold;
+
+    .btn-order-header {
+        background-color: white;
+        border-style: outset;
+        border-width: 1px;
+        padding: 3px;
+    };
+}

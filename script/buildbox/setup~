@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+git log -1 --pretty=%B | grep -q Release
+
+if [ $? -eq 0 ]; then
+    VERSION=$(cat .version)
+    echo "==> Generating... v$VERSION"
+    
+    gulp deploy
+else
+    echo '==> Skip build.'
+fi

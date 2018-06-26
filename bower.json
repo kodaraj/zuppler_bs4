@@ -1,0 +1,21 @@
+{
+  "name": "zuppler-customer-service",
+  "version": "1.0",
+  "authors": [
+    "Petrica Ghiurca"
+  ],
+  "description": "zuppler customer service app",
+  "license": "(c) zuppler",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zuppler-bootstrap": "https://github.com/zuppler/zuppler-bootstrap-theme.git"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+set -e
+
+VERSION=$(cat .version)
+echo "==> Current version: $VERSION"
+
+VERSION="$(($VERSION+1))"
+echo "==> Release version: $VERSION"
+echo $VERSION > .version
+
+echo "==> Tagging release..."
+git add .
+git commit -m "Release v$VERSION"
+git tag "v$VERSION"
+
+echo "==> Pushing release..."
+git push
+
+echo '==> Done'

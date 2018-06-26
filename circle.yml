@@ -1,0 +1,10 @@
+machine:
+  node:
+    version: 5.5.0
+deployment:
+  staging:
+    branch: feedbacks
+
+    commands:
+      - git push git@heroku.com:zuppler-cs-staging.git $CIRCLE_SHA1:master
+      # - heroku run gulp build --app zuppler-cs-staging

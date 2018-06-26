@@ -1,0 +1,64 @@
+body {padding-top: 70px;}
+
+.sidebar-toggle {
+  background:transparent;
+  border:none;
+  position:absolute;
+  left: 7px;
+  top: 7px;
+  border-radius: 50px;
+  outline:none !important;
+  &:hover {background:#CB4813;}
+}
+.navbar-brand {padding-left: 50px;}
+.navbar-form {
+  .btn {background-color: #CB4813;}
+  .form-control, .btn {border-color: #CB4813;}
+}
+
+.layout-full {
+  .sidebar {
+    position:fixed;
+    top: 50px; left:0; bottom: 0; width: 50px;
+    z-index: 100;
+    background:#ccc;
+    padding-top:15px;
+    .nav li a {padding: 7px;}
+    .label {display: block;}
+  }
+  .main-content {
+    margin-left:35px;
+  }
+}
+
+@media (max-width: 991px) {
+  .layout-full .main-content {margin-left:-15px;}
+}
+
+.sidebar {
+  .label {padding:.2em .6em;}
+  .nav-pills {
+    margin-bottom: 10px;
+  }
+  .list-title {
+    text-align: center;
+    position:relative;
+    &:before {
+      content: " ";
+      display:block;
+      position:absolute;
+      left: 0; top:50%;
+      height:1px;
+      background-color:#ddd;
+      width:100%;
+      z-index: -1;
+    }
+    span {
+      font-size:11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background-color: #f3f3f3;
+      padding: 0 10px;
+    }
+  }
+}

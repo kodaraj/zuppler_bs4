@@ -1,0 +1,29 @@
+@function get_contrast($color, $dark, $light) {
+  $yiq: ( ( red($color) * 299 ) + ( green($color) * 587 ) + ( blue($color) * 114 ) ) / 1000;
+  @if $yiq >= 128 {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
+
+// Simplified get_contrast
+@function gc($color, $percent) {
+  @return get_contrast($color, darken($color, $percent), lighten($color, $percent));
+}
+
+@mixin vertical-gradient($from, $to, $filter:false, $stop:100%) {
+  background: $to;
+  background: linear-gradient(to bottom, $from 0%, $to $stop);
+  @if(filter == true) {
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$from}', endColorstr='#{$to}',GradientType=0 );
+  }
+}
+
+@mixin fancy-gradient($color, $hue_shift: 6deg) {
+  $hue: if( hue($color) > 60deg, -1 * $hue_shift, $hue_shift );
+  $from: adjust-hue($color, $hue);
+  $to: $color;
+  // $hue: unitless(hue($color));
+  @include vertical-gradient($from, $to);
+}

@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+git log -1 --pretty=%B | grep -q Release
+
+if [ $? -eq 0 ]; then
+    VERSION=$(cat .version)
+    echo "==> Setup... v$VERSION"
+
+    bower install && npm install && NODE_ENV=production gulp build && NODE_ENV=production webpack
+else
+    echo '==> Skip build.'
+fi
